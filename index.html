@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SmartCoop</title>
+        <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+        <link href="src/css/bootstrap.min.css" rel="stylesheet">
+        <link href="src/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-md bg-white" style="display: none;">
+            <div class="container-fluid">
+                <a href="#" class="navbar-brand">
+                    <i class="lni lni-home me-1"></i>
+                    <span>CoopTacular</span>
+                </a>
+                <button type="button" data-bs-toggle="collapse" data-bs-target="#navDash" class="navbar-toggler" aria-controls="navDash" aria-expanded="false" aria-label="Toggle the navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navDash">
+                    <ul class="navbar-nav">
+                        <li id="liDashBoard" class="nav-item">
+                            <a href="#" class="nav-link active">
+                                <i class="lni lni-agenda"></i>
+                                <span>DashBoard</span>
+                            </a>
+                        </li>
+                        <li id="liSettings" class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="lni lni-cog"></i>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                        <li id="liLogout" class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="lni lni-exit"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="mainContainerDiv" class="bg-image main-content daytime-bg-image" style="height: min-100vh; background-size: cover;">
+            <div class="col-12 d-flex justify-content-center align-items-center min-vh-100">
+                <div id="divStart" class="card border-red col-12 col-md-8 col-lg-5">
+                    <div class="card-header bg-red">
+                        <h1 class="text-center">Welcome to the Flock!</h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="container d-flex justify-content-center">
+                            <img src="src/img/chicken_coop.jpg">
+                        </div>
+                        <p class="fs-5 text-center mt-5 p-3">
+                            We thank you for considering CoopTacular. 
+                            We strive to please our customers with the lastest and greatest coop monitering techonology.
+                            Your coop is now not just a place to house your chickens, but a way to moniter and comfort them with the push of a button.
+                            We hope you enjoy your time with CoopTacular and now your coop awaits!
+                        </p>
+                        <hr>
+                        <div class="d-flex justify-content-around">
+                            <button id="btnWelcomeLogin" class="btn btn-warning btnToggle col-6 me-2" type="button" data-card="welcomeLogin">Existing Member? Click Here</button>
+                            <button id="btnWelcomeRegister" class="btn btn-warning btnToggle col-6" type="button" data-card="welcomeRegister">Want to Join the Flock? Click Here</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- LOGIN CARD -->
+                <div id="divLogin" class="card outline-red col-md-6 col-lg-4" style="display: none;" data-card="login">
+                    <div class="card-header bg-red">
+                        <h2 class="text-center">Login</h2>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div>
+                                <div class="form-floating mb-2">
+                                    <input id="txtLoginUserName" class="form-control" type="text" placeholder="User Name" aria-label="User Name">
+                                    <label for="txtLoginUserName" class="form-label">Email</label>
+                                </div>
+                                <div class="form-floating mb-2">
+                                    <input id="txtLoginPassword" class="form-control" type="password" placeholder="Password" aria-label="Password">
+                                    <label for="txtLoginPassword" class="form-label">Password</label>
+                                </div>
+                            </div>
+    
+                            <button class="btn btn-success col-12" type="button" id="btnLogin">Login</button>
+                            <div class="col-12 d-flex justify-content-center">
+                                <a class="col-12 text-center btnToggle" data-card="Login"><span style="cursor:pointer">Need to Register? Click Here</span></a> 
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
+    
+                <!-- REGISTER CARD -->
+                <div id="divRegister" class="card outline-red col-12 col-md-8 col-lg-6" style="display:none;">
+                    <div class="card-header bg-red mb-2">
+                        <h2 class="text-center">Registration</h2>
+                    </div>
+                    <div class="card-body">
+                        <form class="row g-3">
+                            <div class="container-fluid ">
+                                <div class="row g-2">
+                                    <div class="form-floating col-md-6">
+                                        <input id="txtRegisterEmail" class="form-control" type="email" placeholder="Enter email" aria-label="Email">  
+                                        <label for="txtRegisterEmail" class="form-label">Email</label>                          
+                                    </div>
+                                    <div class="form-floating col-md-6">
+                                        <input id="txtRegisterPassword" class="form-control" type="password" placeholder="Password" aria-label="Password">
+                                        <label for="txtRegisterPassword" class="form-label">Password</label>
+                                    </div>
+                                    <div class="form-floating col-md-6">
+                                        <input id="txtRegisterFirstName" class="form-control" type="text" placeholder="Enter first name" aria-label="First Name">
+                                        <label for="txtRegisterFirstName" class="form-label">First Name</label>
+                                    </div>
+                                    <div class="form-floating col-md-6">
+                                        <input id="txtRegisterLastName" class="form-control" type="text" placeholder="Enter last name" aria-label="Last Name">
+                                        <label for="txtRegisterLastName" class="form-label">Last Name</label>
+                                    </div>
+                                    <div class="form-floating col-md-6">
+                                        <input id="txtRegisterStreetAddress1" class="form-control" type="text" placeholder="Enter street address 1" aria-label="Street Address 1">
+                                        <label for="txtRegisterStreetAddress1" class="form-label">Street Address 1</label>
+                                    </div>
+                                    <div class="form-floating col-md-6">
+                                        <input id="txtRegisterStreetAddress2" class="form-control" type="text" placeholder="Enter street address 2" aria-label="Street Address 2">
+                                        <label for="txtRegisterStreetAddress2" class="form-label">Street Address 2</label>
+                                    </div>
+                                    <div class="form-floating col-md-4">
+                                        <input id="txtRegisterCity" class="form-control" type="text" placeholder="Enter city" aria-label="City">
+                                        <label for="txtRegisterCity" class="form-label">City</label>
+                                    </div>
+                                    <div class="form-floating col-md-4">
+                                        <select id="txtRegisterState" class="form-select" placeholder="Select a State" aria-label="Select a State"> 
+                                            <option value="" selected="selected">Select a State</option>
+                                            <option value="AL">Alabama</option>
+                                            <option value="AK">Alaska</option>
+                                            <option value="AZ">Arizona</option>
+                                            <option value="AR">Arkansas</option>
+                                            <option value="CA">California</option>
+                                            <option value="CO">Colorado</option>
+                                            <option value="CT">Connecticut</option>
+                                            <option value="DE">Delaware</option>
+                                            <option value="DC">District Of Columbia</option>
+                                            <option value="FL">Florida</option>
+                                            <option value="GA">Georgia</option>
+                                            <option value="HI">Hawaii</option>
+                                            <option value="ID">Idaho</option>
+                                            <option value="IL">Illinois</option>
+                                            <option value="IN">Indiana</option>
+                                            <option value="IA">Iowa</option>
+                                            <option value="KS">Kansas</option>
+                                            <option value="KY">Kentucky</option>
+                                            <option value="LA">Louisiana</option>
+                                            <option value="ME">Maine</option>
+                                            <option value="MD">Maryland</option>
+                                            <option value="MA">Massachusetts</option>
+                                            <option value="MI">Michigan</option>
+                                            <option value="MN">Minnesota</option>
+                                            <option value="MS">Mississippi</option>
+                                            <option value="MO">Missouri</option>
+                                            <option value="MT">Montana</option>
+                                            <option value="NE">Nebraska</option>
+                                            <option value="NV">Nevada</option>
+                                            <option value="NH">New Hampshire</option>
+                                            <option value="NJ">New Jersey</option>
+                                            <option value="NM">New Mexico</option>
+                                            <option value="NY">New York</option>
+                                            <option value="NC">North Carolina</option>
+                                            <option value="ND">North Dakota</option>
+                                            <option value="OH">Ohio</option>
+                                            <option value="OK">Oklahoma</option>
+                                            <option value="OR">Oregon</option>
+                                            <option value="PA">Pennsylvania</option>
+                                            <option value="RI">Rhode Island</option>
+                                            <option value="SC">South Carolina</option>
+                                            <option value="SD">South Dakota</option>
+                                            <option value="TN">Tennessee</option>
+                                            <option value="TX">Texas</option>
+                                            <option value="UT">Utah</option>
+                                            <option value="VT">Vermont</option>
+                                            <option value="VA">Virginia</option>
+                                            <option value="WA">Washington</option>
+                                            <option value="WV">West Virginia</option>
+                                            <option value="WI">Wisconsin</option>
+                                            <option value="WY">Wyoming</option>
+                                        </select>
+                                        <label for="txtRegisterState" class="form-label">State</label>
+                                    </div>
+                                    <div class="form-floating col-md-4">
+                                        <input id="txtRegisterZIP" class="form-control" type="text" placeholder="Enter ZIP code" aria-label="Zip Code">
+                                        <label for="txtRegisterZIP" class="form-label">ZIP Code</label>
+                                    </div>
+                                    
+                                    <div class="form-floating col-md-6">
+                                        <input id="txtRegisterPhone" class="form-control" type="tel" placeholder="Enter phone number" aria-label="Phone Number">
+                                        <label for="txtRegisterPhone" class="form-label">Phone Number</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <div class="form-floating col-4">
+                                                <input id="txtRegisterCoopID" class="form-control" type="text" placeholder="Enter coop registration ID" aria-label="Coop Registration ID">
+                                                <label for="txtRegisterCoopID" class="form-label">Coop Registration ID</label>
+                                            </div>
+                                            <button class="btn btn-outline-warning col-2" type="button" id="btnGenerateCoopID"><i class="lni lni-reload" style="font-size: 1.5rem;"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center col-12 offset-md-3">
+                                        <p>If you dont have a CoopID click the <span class="lni lni-reload"></span> to generate one</p>
+                                    </div>
+                                    <div class="justify-content-around">
+                                        <button class="btn btn-success col-12" type="button" id="btnRegister">Register</button>
+                                    </div>
+                                    
+                                    <div class="col-12 d-flex justify-content-center">
+                                        <a class="col-12 text-center btnToggle" data-card="Register">Already have an Account? Click Here</a> 
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="divDashBoard" class="card outline-red col-12 col-md-10" style="display: none;">
+                    <div id="dashboardHeader" class="card-header bg-red">
+                        <h2 class="text-center">DashBoard</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="container-fluid">
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6">
+                                    <!-- EGG CARD -->
+                                    <div id="divEggs" class="card outline-yellow" data-card="eggs">
+                                        <div id="" class="card-header bg-yellow">
+                                            <h3 class="text-center">Eggs</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="accordion col-12" id="accEgg">
+                                                <div class="accordion-item">
+                                                    <h4 class="accordion-header">
+                                                        <button class="accordion-button bg-yellow" type="button" data-bs-toggle="collapse" data-bs-target="#eggGraph" aria-expanded="true" aria-controls="eggGraph">
+                                                            Egg Graph
+                                                        </button>
+                                                    </h4>
+                                                    <div id="eggGraph" class="accordion-collapse collapse show">
+                                                        <div class="accordion-body">
+                                                            <canvas id="canvEggs"></canvas>
+                                                        </div> 
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-item">
+                                                    <h4 class="accordion-header">
+                                                        <button class="accordion-button bg-yellow collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#eggTable" aria-expanded="false" aria-controls="eggTable">
+                                                            Egg Table
+                                                        </button>
+                                                    </h4>
+                                                    <div id="eggTable" class="accordion-collapse collapse">
+                                                        <div class="accordion-body">
+                                                            <div class="overflow-y-scroll">
+                                                                <table id="tblEgg" class="table table-striped" style="width: 100%;">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th scope="col">Date</th>
+                                                                            <th scope="col">Egg Count</th>
+                                                                            <th scope="col"></th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody class="table-group-divider"></tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-item">
+                                                    <h4 class="accordion-header">
+                                                        <button class="accordion-button bg-yellow collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#eggAddEntry" aria-expanded="false" aria-controls="eggAddEntry">
+                                                            Add Entry?
+                                                        </button>   
+                                                    </h4>
+                                                    <div id="eggAddEntry" class="accordion-collapse collapse">
+                                                        <div class="accordion-body">
+                                                            <form class="container-fluid">
+                                                                <div class="row g-3">
+                                                                    <div class="col-12 col-md-6">
+                                                                        <div class="form-floating">
+                                                                            <input id="numEggHarvest" class="form-control" type="number" placeholder="Eggs Harvested" aria-label="Eggs Harvested">
+                                                                            <label for="numEggHarvest" class="form-label">Eggs Harvested</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12 col-md-6">
+                                                                        <div class="form-floating">
+                                                                            <input id="txtDateHarvest" class="form-control" type="date" placeholder="Date Harvested" aria-label="Date Harvested">
+                                                                            <label for="txtDateHarvest" class="form-label">Date Harvested</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12">
+                                                                        <button class="btn btn-success btn-lg col-12 bi-egg-fill" type="button" id="btnHarvest"> Harvest</button>
+                                                                    </div>    
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-12 col-md-6">
+                                    <!--Environment card-->
+                                    <div id="divEnvironment" class="card outline-yellow">
+                                        <div class="card-header bg-yellow">
+                                            <h3 class="text-center">Environment</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="accordion col-12" id="accEnvironment">
+                                                <div class="accordion-item">
+                                                    <h4 class="accordion-header">
+                                                        <button class="accordion-button bg-yellow" type="button" data-bs-toggle="collapse" data-bs-target="#environmentGraph" aria-expanded="true" aria-controls="environmentGraph">
+                                                            Environment Graph
+                                                        </button>
+                                                    </h4>
+                                                    <div id="environmentGraph" class="accordion-collapse collapse show">
+                                                        <div class="accordion-body">
+                                                            <canvas id="canvEnv"></canvas>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-item">
+                                                    <h4 class="accordion-header">
+                                                        <button class="accordion-button bg-yellow collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#environmentTable" aria-expanded="false" aria-controls="environmentTable">
+                                                            Environment Table
+                                                        </button>
+                                                    </h4>
+                                                    <div id="environmentTable" class="accordion-collapse collapse">
+                                                        <div class="accordion-body">
+                                                            <div class="overflow-y-scroll">
+                                                                <table id="tblEnv" class="table table-striped" style="width: 100%;">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th scope="col">Date/Time</th>
+                                                                            <th scope="col">Tempurature</th>
+                                                                            <th scope="col">Humidity</th>
+                                                                            <th scope="col"></th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody class="table-group-divider"></tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-item">
+                                                    <h4 class="accordion-header">
+                                                        <button class="accordion-button bg-yellow collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#environmentAddEntry" aria-expanded="false" aria-controls="environmentAdd">
+                                                            Add Entry?
+                                                        </button>
+                                                    </h4>
+                                                    <div id="environmentAddEntry" class="accordion-collapse collapse">
+                                                        <div class="accordion-body">
+                                                            <form class="container-fluid" id="formEnvAddEntry">
+                                                                <div class="row g-3">
+                                                                    <div class="col-12 col-md-6">
+                                                                        <div class="form-floating">
+                                                                            <input class="form-control" type="text" id="inpEnvAddTemperature" placeholder="Temperature">
+                                                                            <label class="form-label" for="inpEnvAddTemperature">Temperature</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12 col-md-6">
+                                                                        <div class="form-floating">
+                                                                            <input class="form-control" type="text" id="inpEnvAddHumidity" placeholder="Humidity">
+                                                                            <label class="form-label" for="inpEnvAddHumidity">Humidity</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12">
+                                                                        <button class="btn btn-success btn-lg col-12 bi bi-speedometer2" id="btnEnvAdd" type="button"> Add Entry</button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                       
+                    </div>
+                </div>
+        
+                 <!-- SETTINGS -->
+                <div id="divSettings" class="card outline-red col-12 col-md-8 col-lg-6" data-card="settings" style="display: none;">
+                    <div id="settingsHeader" class="card-header bg-red">
+                        <h2 class="">Settings</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex flex-column">
+                            <div class="col-12 d-flex justify-content-between">
+                                <label class="form-label" for="rangeFanSpeed">Fan Speed</label>
+                                <p class="col-2 text-center d-inline" id="spanFanSpeed">700 RPM</p>
+                            </div>
+                            <input id="rangeFanSpeed" class="form-range" min="400" max="1000" step="10" type="range" aria-label="Fan speed">
+                        </div>
+                        <div class="d-flex flex-column col-12">
+                            <p>Lights</p>
+                            <div class="btn-group" role="group" aria-label="Toggle lights">
+                                <input type="radio" class="btn-check" name="btnLightRadio" id="btnToggleLightsOn" value="On" autocomplete="off" checked>
+                                <label class="btn btn-outline-primary" for="btnToggleLightsOn">On</label>
+                            
+                                <input type="radio" class="btn-check" name="btnLightRadio" id="btnToggleLightsOff" value="Off" autocomplete="off">
+                                <label class="btn btn-outline-danger" for="btnToggleLightsOff">Off</label>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column col-12">
+                            <input id="btnFeedChickens" class="btn btn-success my-2" type="button" value="Feed" aria-label="Feed Chickens">
+                            <div id="feedOrNoFeed" class="text-center">
+                                <p>You can't feed the chickens again until the timer is up.</p>
+                                <h2 id="paraFeedTime" class="align-self-center">10:00</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+        <script src="./src/js/validation.js"></script>
+        <script src="./src/js/toggle.js"></script>
+        <script src="./src/js/sessions.js"></script>
+        <script src="./src/js/eggs.js"></script>
+        <script src="./src/js/environment.js"></script>
+        <script src="./src/js/settings.js"></script>
+    </body>
+</html>

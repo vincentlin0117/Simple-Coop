@@ -1,0 +1,69 @@
+body {
+    font-family:cursive
+}
+
+.navbar {
+    font-size: 1.3rem;
+}
+
+.navbar-nav li a:hover {
+    background-color: #ecb751;
+    color: #fffffe;
+    border-radius: 0.8rem;
+}
+
+.bg-white {
+    background-color: #fffffe;
+}
+
+.border-white {
+    border-color: #fffffe;
+}
+
+.bg-red {
+    background-color: #df4e57;
+}
+
+.outline-red {
+    border-color: #df4e57;
+}
+
+.bg-yellow {
+    background-color: #ecb751;
+}
+
+.outline-yellow {
+    border-color: #ecb751;
+}
+
+.bg-dark-white {
+    background-color: #aaaaa9;
+}
+
+.border-dark-white {
+    border-color: #aaaaa9;
+}
+
+.bg-dark-red {
+    background-color: #8a3036;
+}
+
+.outline-dark-red {
+    border-color: #8a3036;
+}
+
+.bg-dark-yellow {
+    background-color: #977534;
+}
+
+.outline-dark-yellow {
+    border-color: #977534;
+}
+
+.daytime-bg-image {
+    background-image: url('../img/field.jpg');
+}
+
+.nighttime-bg-image {
+    background-image: url('../img/night-farm.jpg');
+}
